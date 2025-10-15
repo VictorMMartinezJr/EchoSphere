@@ -3,6 +3,7 @@ package in.victormartinezjr.echosphere.service;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import in.victormartinezjr.echosphere.document.Album;
+import in.victormartinezjr.echosphere.dto.AlbumListResponse;
 import in.victormartinezjr.echosphere.dto.AlbumRequest;
 import in.victormartinezjr.echosphere.repository.AlbumRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,17 @@ public class AlbumService {
                 .build();
 
         return albumRepository.save(newAlbum);
+    }
+
+    public AlbumListResponse getAllAlbums() {
+        return new AlbumListResponse(true, albumRepository.findAll());
+    }
+
+    public Boolean deleteAlbum(String id) {
+        Album albumToDelete = albumRepository.findById(id).orElseThrow(() -> new RuntimeException("Album not found"));
+
+        albumRepository.delete(albumToDelete);
+
+        return true;
     }
 }
