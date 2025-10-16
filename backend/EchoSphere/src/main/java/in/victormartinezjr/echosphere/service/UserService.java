@@ -5,6 +5,7 @@ import in.victormartinezjr.echosphere.dto.RegisterRequest;
 import in.victormartinezjr.echosphere.dto.UserResponse;
 import in.victormartinezjr.echosphere.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,9 @@ public class UserService {
                 .email(newUser.getEmail())
                 .role(UserResponse.Role.USER)
                 .build();
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
