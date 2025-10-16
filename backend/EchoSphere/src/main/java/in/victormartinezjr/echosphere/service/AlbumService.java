@@ -21,7 +21,8 @@ public class AlbumService {
 
 
     public Album addAlbum(AlbumRequest albumRequest) throws IOException {
-        Map<String, Object> imageUploadResult = cloudinary.uploader().upload(albumRequest.getImageFile().getBytes(), ObjectUtils.asMap("resource_type", "image"));
+        Map<String, Object> imageUploadResult = cloudinary.uploader()
+                .upload(albumRequest.getImageFile().getBytes(), ObjectUtils.asMap("resource_type", "image"));
 
         Album newAlbum = Album.builder()
                 .name(albumRequest.getName())
