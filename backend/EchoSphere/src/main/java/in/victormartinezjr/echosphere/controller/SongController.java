@@ -1,15 +1,13 @@
 package in.victormartinezjr.echosphere.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import in.victormartinezjr.echosphere.dto.SongListResponse;
 import in.victormartinezjr.echosphere.dto.SongRequest;
 import in.victormartinezjr.echosphere.service.SongService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -31,6 +29,30 @@ public class SongController {
             return ResponseEntity.status(HttpStatus.CREATED).body(songService.addSong(songRequest));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllSongs() {
+        try {
+            return ResponseEntity.ok(songService.getAllSongs());
+        } catch (Exception e) {
+            return ResponseEntity.ok(new SongListResponse(false, null));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteSong(@PathVariable String id) {
+        try {
+            boolean deleted = songService.deleteSong(id);
+            if (deleted) {
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            }
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 }
