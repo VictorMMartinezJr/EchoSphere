@@ -70,6 +70,12 @@ const Register = ({ onSwitchToLogin }) => {
         {/* Register form */}
         <div className="bg-gray-900/80 backdrop-blur-lg rounded-2xl p-8 shadow-2xl border border-gray-700">
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Error */}
+            {error && (
+              <div className="bg-red-500/20 border border-red-500 rounded-lg p-3 text-red-300 text-sm">
+                {error}
+              </div>
+            )}
             {/* Email */}
             <div>
               <label
