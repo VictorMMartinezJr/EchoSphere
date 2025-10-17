@@ -1,11 +1,14 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/authContext";
 
-const Login = () => {
+const Login = ({ onSwitchToRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +21,19 @@ const Login = () => {
       return;
     }
 
-    console.log(email, password);
+    setLoading(true);
+    try {
+      const response = await login(email, password);
+      if (!response.success) {
+        toast.error(response.message);
+        setError(response.message);
+      }
+    } catch (error) {
+      toast.error("Unexpected error. Please try again later");
+      setError(e.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,7 +43,7 @@ const Login = () => {
         <div className="text-center">
           <div className="flex justify-center items-center mb-6">
             <div className="flex justify-center items-center mb-6">
-              <img src="" alt="logo" className="w-16 h-16" />
+              <img src={""} alt="logo" className="w-16 h-16" />
               <h1 className="ml-3 text-3xl font-bold text-white">EchoSphere</h1>
             </div>
           </div>
@@ -82,8 +97,18 @@ const Login = () => {
             </div>
 
             {/* Submit button */}
-            <button className="w-full flex justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 cursor-pointer">
-              Login
+            <button
+              className="w-full flex justify-center px-4 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105 cursor-pointer"
+              disabled={loading}
+            >
+              {loading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Logging in
+                </div>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
 
@@ -91,7 +116,10 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-400">
               Don't have an account? {""}
-              <button className="text-green-400 hover:text-green-300 font-medium transition-colors cursor-pointer">
+              <button
+                className="text-green-400 hover:text-green-300 font-medium transition-colors cursor-pointer"
+                onClick={onSwitchToRegister}
+              >
                 Register
               </button>
             </p>
