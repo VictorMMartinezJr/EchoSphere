@@ -34,7 +34,7 @@ const Navbar = () => {
           {/* Home/Back/Forward buttons */}
           <div className="flex items-center gap-2">
             <div
-              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors lg:hidden"
+              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-blue-700 transition-colors lg:hidden"
               onClick={() => {
                 navigate("/");
                 clearSearch();
@@ -43,13 +43,13 @@ const Navbar = () => {
               <FiHome className="w-4 h-4 text-white" />
             </div>
             <div
-              className="w-8 h-8 flex justify-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors"
+              className="w-8 h-8 flex justify-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-blue-700 transition-colors"
               onClick={() => navigate(-1)}
             >
               <FaChevronLeft className="w-4 h-4 text-white" />
             </div>
             <div
-              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer  hover:bg-green-700 transition-colors"
+              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer  hover:bg-blue-700 transition-colors"
               onClick={() => navigate(1)}
             >
               <FaChevronRight className="w-4 h-4 text-white" />
@@ -58,7 +58,7 @@ const Navbar = () => {
 
           {/* User button */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 bg-green-700 px-3 py-1 rounded-2xl">
+            <div className="flex items-center gap-2 bg-blue-700 px-3 py-1 rounded-2xl">
               <FiUser className="w-4 h-4 text-white" />
               <span className="hidden sm:inline text-white text-sm">
                 {user?.email.split("@")[0]}
@@ -84,11 +84,11 @@ const Navbar = () => {
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 pl-8 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="flex-1 pl-8 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
             onFocus={handleSearchClick}
           />
           <button className="cursor-pointer" onClick={handleClearSearch}>
-            <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-green-700" />
+            <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-blue-700" />
           </button>
         </div>
       </div>

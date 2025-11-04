@@ -27,7 +27,7 @@ const Sidebar = () => {
     <div className="hidden lg:flex flex-col w-[25%] h-full p-2 gap-2 text-white">
       <div className="bg-[#121212] h-[15%] flex flex-col justify-around rounded px-4">
         <div
-          className="flex items-center gap-3 cursor-pointer hover:text-green-400 transition-colors"
+          className="flex items-center gap-3 cursor-pointer hover:text-blue-400 transition-colors"
           onClick={() => {
             navigate("/");
             clearSearch();
@@ -41,7 +41,7 @@ const Sidebar = () => {
         <div className="py-2">
           {!showSearchInput ? (
             <div
-              className="flex items-center gap-3 cursor-pointer hover:text-green-500 transition-colors"
+              className="flex items-center gap-3 cursor-pointer hover:text-blue-500 transition-colors"
               onClick={handleSearchClick}
             >
               <FaSearch className="w-4 h-4" />
@@ -54,11 +54,11 @@ const Sidebar = () => {
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                className="flex-1 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                 autoFocus
               />
               <button className="cursor-pointer " onClick={handleClearSearch}>
-                <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-green-700" />
+                <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-blue-700" />
               </button>
             </div>
           )}
@@ -74,8 +74,8 @@ const Sidebar = () => {
           </div>
 
           <div className="flex items-center gap-3 cursor-pointer">
-            <FaArrowRight className="w-4 h-4 hover:text-green-700 transition-colors" />
-            <FaPlus className="w-4 h-4 hover:text-green-700 transition-colors" />
+            <FaArrowRight className="w-4 h-4 hover:text-blue-700 transition-colors" />
+            <FaPlus className="w-4 h-4 hover:text-blue-700 transition-colors" />
           </div>
         </div>
 
