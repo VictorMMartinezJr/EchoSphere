@@ -43,7 +43,7 @@ const Navbar = () => {
               <FiHome className="w-4 h-4 text-white" />
             </div>
             <div
-              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors"
+              className="w-8 h-8 flex justify-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors"
               onClick={() => navigate(-1)}
             >
               <FaChevronLeft className="w-4 h-4 text-white" />
