@@ -34,7 +34,7 @@ const Navbar = () => {
           {/* Home/Back/Forward buttons */}
           <div className="flex items-center gap-2">
             <div
-              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors"
+              className="w-8 h-8 flex justidy-center items-center bg-black p-2 rounded-2xl cursor-pointer hover:bg-green-700 transition-colors lg:hidden"
               onClick={() => {
                 navigate("/");
                 clearSearch();
