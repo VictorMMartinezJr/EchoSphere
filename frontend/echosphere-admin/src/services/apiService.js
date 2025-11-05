@@ -62,3 +62,5 @@ export const songsAPI = {
   list: () => apiClient.get("/api/songs"),
   remove: (songId) => apiClient.delete(`/api/songs/${songId}`),
 };
+
+export default apiClient;
