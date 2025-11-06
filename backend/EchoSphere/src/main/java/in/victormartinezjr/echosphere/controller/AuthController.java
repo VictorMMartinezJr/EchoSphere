@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -65,6 +67,16 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/promote-to-admin")
+    public ResponseEntity<?> promoteToAdmin(@RequestBody Map<String, String> request) {
+        try {
+            User user = userService.promoteToAdmin(request.get("email"));
+            return ResponseEntity.ok(new AuthResponse(null, user.getEmail(), "ADMIN"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to promote user to admin");
         }
     }
 }
