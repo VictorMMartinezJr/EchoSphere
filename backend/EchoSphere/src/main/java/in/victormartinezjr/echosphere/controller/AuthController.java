@@ -33,12 +33,17 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
         try {
+            User existingUser = userService.findByEmail(authRequest.getEmail());
+
+            if (authRequest.getPortal().equalsIgnoreCase("admin") && existingUser.getRole().name().equalsIgnoreCase("user")) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email/Password is incorrect");
+            }
+
             // Authenticate user
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), authRequest.getPassword()));
 
             // Load user details
             UserDetails userDetails = appUserDetailsService.loadUserByUsername(authRequest.getEmail());
-            User existingUser = userService.findByEmail(authRequest.getEmail());
 
             // Generate JWT token
             String jwtToken = jwtUtil.generateToken(userDetails, existingUser.getRole().name());

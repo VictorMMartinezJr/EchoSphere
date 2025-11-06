@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(`${API_BASE_URL}/api/auth/register`, {
         email,
         password,
+        portal: "user",
       });
 
       if (response.status === 200) {
@@ -64,6 +65,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, {
         email,
         password,
+        portal: "user",
       });
 
       if (response.status === 200) {
