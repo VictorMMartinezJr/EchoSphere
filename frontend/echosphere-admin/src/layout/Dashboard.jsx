@@ -1,5 +1,18 @@
-const Dashboard = () => {
-  return <div>Dashboard</div>;
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+
+const Dashboard = ({ children, activeMenu }) => {
+  return (
+    <div>
+      <Navbar activeMenu={activeMenu} />
+      <div className="flex">
+        <div className="max-[1024px]:hidden">
+          <Sidebar activeMenu={activeMenu} />
+        </div>
+        <div className="grow mx-5">{children}</div>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
