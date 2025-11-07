@@ -22,7 +22,7 @@ export const PlayerContextProvider = ({ children }) => {
 
   const { user, token, getAuthHeaders } = useAuth();
   const audioRef = useRef();
-  const SeekBg = useRef();
+  const seekBg = useRef();
   const seekBar = useRef();
 
   const playSong = () => {
@@ -78,7 +78,7 @@ export const PlayerContextProvider = ({ children }) => {
 
   const seekSong = async (e) => {
     audioRef.current.currentTime =
-      (e.nativeEvent.offsetX / SeekBg.current.offsetWidth) *
+      (e.nativeEvent.offsetX / seekBg.current.offsetWidth) *
       audioRef.current.duration;
   };
 
@@ -104,7 +104,6 @@ export const PlayerContextProvider = ({ children }) => {
       });
       const albums = response.data.albums || [];
       setAlbumsData(albums);
-      console.log(response);
     } catch (error) {
       console.error(error);
       setAlbumsData([]);
@@ -164,7 +163,7 @@ export const PlayerContextProvider = ({ children }) => {
     getSongs,
     getAlbums,
     audioRef,
-    SeekBg,
+    seekBg,
     seekBar,
     track,
     setTrack,
@@ -177,7 +176,7 @@ export const PlayerContextProvider = ({ children }) => {
     playSongWithId,
     previousSong,
     nextSong,
-    seekBar,
+    seekSong,
   };
 
   return (
