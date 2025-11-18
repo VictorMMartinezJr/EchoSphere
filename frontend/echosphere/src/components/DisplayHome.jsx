@@ -10,7 +10,7 @@ const DisplayHome = () => {
     <>
       <div className="mb-4">
         <h1 className="my-5 font-bold text-2xl">Featured Charts</h1>
-        <div className="flex overflow-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {/* Display albums */}
           {albumsData?.map((item, i) => (
             <AlbumItem
@@ -26,7 +26,7 @@ const DisplayHome = () => {
 
       <div className="mb-4">
         <h1 className="my-5 font-bold text-2xl">Today's biggest hits</h1>
-        <div className="flex overflow-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {/* Display songs */}
           {songsData?.map((item, i) => (
             <SongItem
