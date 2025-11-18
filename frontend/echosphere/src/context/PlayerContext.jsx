@@ -42,7 +42,6 @@ export const PlayerContextProvider = ({ children }) => {
       }
     });
 
-    await audioRef.current.play();
     setPlayStatus(true);
   };
 
@@ -155,6 +154,18 @@ export const PlayerContextProvider = ({ children }) => {
       audio.removeEventListener("timeupdate", updateSeekbar);
       audio.removeEventListener("loadedmetadata", handleLoadedMetaData);
     };
+  }, [track]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!track || !audio) return;
+
+    const onLoaded = () => {
+      audio.play();
+    };
+
+    audio.addEventListener("loadeddata", onLoaded);
+    return () => audio.removeEventListener("loadeddata", onLoaded);
   }, [track]);
 
   const contextValue = {
