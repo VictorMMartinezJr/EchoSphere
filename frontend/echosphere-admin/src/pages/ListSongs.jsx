@@ -61,14 +61,14 @@ const ListSongs = () => {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Songs Library
           </h1>
-          <p className="text-gray-600">Manage your songs collection</p>
+          <p className="text-gray-600">Manage your songs</p>
         </div>
 
         {/* Table */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
           {/* Table header */}
           <div className="bg-blue-600 px-6 py-4">
-            <div className="grid grid-cols-12 gap-4 items-center text-white font-semibold">
+            <div className="grid grid-cols-9 gap-4 items-center text-white font-semibold sm:grid-cols-12">
               <div className="col-span-2 flex items-center gap-2">
                 <ImImage className="hidden sm:inline w-4 h-4" />
                 <span>Cover</span>
@@ -78,7 +78,7 @@ const ListSongs = () => {
                 <LuMusic4 className="hidden sm:inline w-4 h-4" />
                 <span>Name</span>
               </div>
-              <div className="col-span-3 flex items-center gap-2">
+              <div className="hidden sm:flex items-center col-span-3 gap-2">
                 <FiFolder className="hidden sm:inline w-4 h-4" />
                 <span>Album</span>
               </div>
@@ -88,8 +88,9 @@ const ListSongs = () => {
                 <span>Duration</span>
               </div>
 
-              <div className="col-span-2 text-center">
-                <FiTool className="hidden sm:inline w-4 h-4" /> Actions
+              <div className="col-span-2 items-center gap-2">
+                <FiTool className="hidden sm:inline w-4 h-4" />
+                <span>Actions</span>
               </div>
             </div>
           </div>
@@ -108,7 +109,7 @@ const ListSongs = () => {
               data.map((song, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-12 gap-4 items-center px-6 py-4 transition-colors duration-200 hover:bg-gray-50 "
+                  className="grid grid-cols-9 gap-4 items-center px-6 py-4 transition-colors duration-200 hover:bg-gray-50 sm:grid-cols-12"
                 >
                   {/* Song image */}
                   <div className="col-span-2">
@@ -129,7 +130,7 @@ const ListSongs = () => {
                   </div>
 
                   {/* Song album */}
-                  <div className="col-span-3">
+                  <div className="hidden sm:inline-block col-span-3">
                     <p className="text-gray-600 truncate">
                       {song?.albumName || "Single Release"}
                     </p>
