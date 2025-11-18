@@ -60,14 +60,14 @@ const ListAlbums = () => {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Albums Library
           </h1>
-          <p className="text-gray-600">Manage your albums collection</p>
+          <p className="text-gray-600">Manage your albums</p>
         </div>
 
         {/* Table */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
           {/* Table header */}
           <div className="bg-blue-600 px-6 py-4">
-            <div className="grid grid-cols-12 gap-4 items-center text-white font-semibold">
+            <div className="grid grid-cols-9 gap-4 items-center text-white font-semibold sm:grid-cols-12">
               <div className="col-span-2 flex items-center gap-2">
                 <ImImage className="hidden sm:inline w-4 h-4" />
                 <span>Cover</span>
@@ -77,7 +77,7 @@ const ListAlbums = () => {
                 <FiFolder className="hidden sm:inline w-4 h-4" />
                 <span>Name</span>
               </div>
-              <div className="col-span-3 flex items-center gap-2">
+              <div className="hidden sm:flex items-center col-span-3 gap-2">
                 <MdOutlineTextsms className="hidden sm:inline w-4 h-4" />
                 <span>Description</span>
               </div>
@@ -107,7 +107,7 @@ const ListAlbums = () => {
               data.map((album, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-12 gap-4 items-center px-6 py-4 transition-colors duration-200 hover:bg-gray-50 "
+                  className="grid grid-cols-9 gap-4 items-center px-6 py-4 transition-colors duration-200 hover:bg-gray-50 sm:grid-cols-12"
                 >
                   {/* Album image */}
                   <div className="col-span-2">
@@ -128,7 +128,7 @@ const ListAlbums = () => {
                   </div>
 
                   {/* Album description */}
-                  <div className="col-span-3">
+                  <div className="hidden sm:inline-block col-span-3">
                     <p className="text-gray-600 truncate">
                       {album?.description || "No description"}
                     </p>
@@ -142,7 +142,7 @@ const ListAlbums = () => {
                         title={`Theme color: ${album?.bgColor}`}
                         className="w-6 h-6 rounded-full border-2 border-gray-300 shadow-sm "
                       ></div>
-                      <span className="text-sm text-gray-500 font-mono">
+                      <span className="hidden sm:inline-block text-sm text-gray-500 font-mono">
                         {album?.bgColor}
                       </span>
                     </div>
