@@ -33,26 +33,26 @@ const Player = () => {
         {/* Prevous song */}
         <div className="flex gap-4">
           <FaStepBackward
-            className="w-4 h-4 cursor-pointer text-white hover:text-green-500 transition-colors"
+            className="w-4 h-4 cursor-pointer text-white hover:text-blue-500 transition-colors"
             onClick={previousSong}
           />
 
           {playStatus ? (
             // Pause song
             <FaPause
-              className="w-4 h-4 cursor-pointer text-white hover:text-green-500 transition-colors"
+              className="w-4 h-4 cursor-pointer text-white hover:text-blue-500 transition-colors"
               onClick={pauseSong}
             />
           ) : (
             // Play song
             <FaPlay
-              className="w-4 h-4 cursor-pointer text-white hover:text-green-500 transition-colors"
+              className="w-4 h-4 cursor-pointer text-white hover:text-blue-500 transition-colors"
               onClick={playSong}
             />
           )}
           {/* Next song */}
           <FaStepForward
-            className="w-4 h-4 cursor-pointer text-white hover:text-green-500 transition-colors"
+            className="w-4 h-4 cursor-pointer text-white hover:text-blue-500 transition-colors"
             onClick={nextSong}
           />
         </div>
@@ -71,7 +71,7 @@ const Player = () => {
           >
             <hr
               ref={seekBar}
-              className="h-1 border-none w-0 bg-green-500 rounded-full"
+              className="h-1 border-none w-0 bg-blue-500 rounded-full"
             />
           </div>
           {/* Track length */}

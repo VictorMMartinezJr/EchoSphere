@@ -27,7 +27,7 @@ const Sidebar = () => {
     <div className="hidden lg:flex flex-col w-[25%] h-full p-2 gap-2 text-white">
       <div className="bg-[#121212] h-[15%] flex flex-col justify-around rounded px-4">
         <div
-          className="flex items-center gap-3 cursor-pointer hover:text-blue-400 transition-colors"
+          className="flex items-center gap-3 cursor-pointer hover:text-blue-500 transition-colors"
           onClick={() => {
             navigate("/");
             clearSearch();
@@ -54,11 +54,11 @@ const Sidebar = () => {
                 placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="flex-1 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="flex-1 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 autoFocus
               />
               <button className="cursor-pointer " onClick={handleClearSearch}>
-                <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-blue-700" />
+                <MdOutlineClear className="w-6 h-6 text-gray-400 hover:text-blue-500" />
               </button>
             </div>
           )}
@@ -74,14 +74,14 @@ const Sidebar = () => {
           </div>
 
           <div className="flex items-center gap-3 cursor-pointer">
-            <FaArrowRight className="w-4 h-4 hover:text-blue-700 transition-colors" />
-            <FaPlus className="w-4 h-4 hover:text-blue-700 transition-colors" />
+            <FaArrowRight className="w-4 h-4 hover:text-blue-500 transition-colors" />
+            <FaPlus className="w-4 h-4 hover:text-blue-500 transition-colors" />
           </div>
         </div>
 
         <div className="flex flex-col justify-start items-start p-4 bg-[#242424] m-2 rounded font-semibold gap-1 pl-4">
           <h1>Create your first playlist</h1>
-          <p className="font-light">It's easy we will help you</p>
+          <p className="font-light">All your favorites in one place</p>
           <button className="px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4 cursor-pointer">
             Create Playlist
           </button>
@@ -89,7 +89,7 @@ const Sidebar = () => {
 
         <div className="flex flex-col justify-start items-start bg-[#242424] m-2 rounded font-semibold p-4 mt-4">
           <h1>Let's find some podcasts to follow</h1>
-          <p className="font-light">We will keep you updated on new episodes</p>
+          <p className="font-light">Stay updated on new episodes</p>
           <button className="px-4 py-1.5 bg-white text-[15px] text-black rounded-full mt-4 cursor-pointer">
             Browse Podcasts
           </button>

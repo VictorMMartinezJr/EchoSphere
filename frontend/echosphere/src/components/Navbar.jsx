@@ -84,7 +84,7 @@ const Navbar = () => {
             placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="flex-1 pl-8 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="flex-1 pl-8 bg-[#2a2a2a] text-white placeholder-gray-400 px-3 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             onFocus={handleSearchClick}
           />
           <button className="cursor-pointer" onClick={handleClearSearch}>
