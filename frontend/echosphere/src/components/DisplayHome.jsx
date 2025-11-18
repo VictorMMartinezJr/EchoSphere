@@ -4,7 +4,8 @@ import AlbumItem from "./AlbumItem";
 import SongItem from "./SongItem";
 
 const DisplayHome = () => {
-  const { songsData, albumsData } = useContext(PlayerContext);
+  const { songsData, albumsData, track, setTrack, setPlayStatus, playSong } =
+    useContext(PlayerContext);
 
   return (
     <>
@@ -29,12 +30,23 @@ const DisplayHome = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {/* Display songs */}
           {songsData?.map((item, i) => (
-            <SongItem
-              key={i}
-              id={item._id}
-              name={item.name}
-              image={item.image}
-            />
+            <div
+              onClick={() => {
+                if (track != item) {
+                  setTrack(item);
+                } else {
+                  playSong();
+                }
+                setPlayStatus(true);
+              }}
+            >
+              <SongItem
+                key={i}
+                id={item._id}
+                name={item.name}
+                image={item.image}
+              />
+            </div>
           ))}
         </div>
       </div>

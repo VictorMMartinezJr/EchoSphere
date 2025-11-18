@@ -5,8 +5,8 @@ import { assets } from "../assets/assets";
 import { FaRegClock } from "react-icons/fa";
 
 const DisplayAlbum = ({ album }) => {
-  const { albumsData, songsData } = useContext(PlayerContext);
-  const { id } = useParams();
+  const { albumsData, songsData, track, setTrack, setPlayStatus, playSong } =
+    useContext(PlayerContext);
 
   const albumSongs = songsData.filter((s) => s.albumName === album.name);
   const numOfSongs = albumSongs.length;
@@ -50,6 +50,14 @@ const DisplayAlbum = ({ album }) => {
         <div
           key={i}
           className="grid grid-cols-3 gap-2 p-2 items-center text-[#a7a7a7] cursor-pointer hover:bg-[#ffffff2b] sm:grid-cols-4"
+          onClick={() => {
+            if (track != song) {
+              setTrack(song);
+            } else {
+              playSong();
+            }
+            setPlayStatus(true);
+          }}
         >
           <p className="text-white">
             <b className="mr-4 text-[#a7a7a7]">{++i}</b>
