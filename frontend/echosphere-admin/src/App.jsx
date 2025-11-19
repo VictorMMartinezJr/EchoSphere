@@ -7,7 +7,7 @@ import AddAlbum from "./pages/AddAlbum";
 import ListAlbums from "./pages/ListAlbums";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-export const API_BASE_URL = "http://localhost:8080";
+export const API_BASE_URL = "https://echosphere-backend-9666.onrender.com";
 
 const App = () => {
   return (
