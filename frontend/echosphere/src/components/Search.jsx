@@ -59,8 +59,8 @@ const Search = () => {
             {songs?.map((song, i) => (
               <div
                 onClick={() => {
-                  if (track != item) {
-                    setTrack(item);
+                  if (track != song) {
+                    setTrack(song);
                   } else {
                     playSong();
                   }
