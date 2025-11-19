@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create axios instance
 const apiClient = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://echosphere-backend-9666.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
