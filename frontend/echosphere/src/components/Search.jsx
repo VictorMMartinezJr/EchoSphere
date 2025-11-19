@@ -2,9 +2,13 @@ import { FaSearch } from "react-icons/fa";
 import { useSearch } from "../context/SearchContext";
 import SongItem from "./SongItem";
 import AlbumItem from "./AlbumItem";
+import { useContext } from "react";
+import { PlayerContext } from "../context/PlayerContext";
 
 const Search = () => {
-  const { searchQuery, searchResults, isSearchActive } = useSearch();
+  const { searchResults, isSearchActive } = useSearch();
+  const { track, setTrack, setPlayStatus, playSong } =
+    useContext(PlayerContext);
   const { songs, albums } = searchResults;
   const totalResults = songs.length + albums.length;
 
@@ -53,12 +57,23 @@ const Search = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {songs?.map((song, i) => (
-              <SongItem
-                key={i}
-                id={song._id}
-                name={song.name}
-                image={song.image}
-              />
+              <div
+                onClick={() => {
+                  if (track != item) {
+                    setTrack(item);
+                  } else {
+                    playSong();
+                  }
+                  setPlayStatus(true);
+                }}
+              >
+                <SongItem
+                  key={i}
+                  id={song._id}
+                  name={song.name}
+                  image={song.image}
+                />
+              </div>
             ))}
           </div>
         </div>
