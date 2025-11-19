@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
-export const API_BASE_URL = "http://localhost:8080";
+export const API_BASE_URL = "https://echosphere-backend-9666.onrender.com";
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
